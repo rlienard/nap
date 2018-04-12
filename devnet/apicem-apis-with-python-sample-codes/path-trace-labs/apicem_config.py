@@ -2,11 +2,11 @@
 # Change apic-em IP to the one you are using
 # APICEM_IP =  "sandboxapicem.cisco.com"
 # APICEM_IP is a string
-APICEM_IP = "sandboxapicem.cisco.com"
+APICEM_IP = "10.138.50.95"
 
 # Step 2
 # Eneter user name and password to get a service ticket
 # If you assign username, password and version here you don't need to pass parameter when calling
-USERNAME = "devnetuser"
-PASSWORD = "Cisco123!"
+USERNAME = "admin"
+PASSWORD = "!Bluefish"
 VERSION = "v1"
