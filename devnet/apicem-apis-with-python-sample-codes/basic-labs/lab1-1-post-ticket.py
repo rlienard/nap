@@ -9,9 +9,9 @@ import json       # Import JSON encoder and decode module
 requests.packages.urllib3.disable_warnings() # Disable warnings
 
 # APIC-EM IP, modify these parameters if you are using your own APIC-EM
-apicem_ip = "10.138.50.95"
-username = "admin"
-password = "!Bluefish"
+apicem_ip = ""
+username = ""
+password = ""
 version = "v1"
 
 # JSONhttps://sandboxapic.cisco.com/ input
