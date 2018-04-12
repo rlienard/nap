@@ -9,9 +9,9 @@ import json       # Import JSON encoder and decode module
 requests.packages.urllib3.disable_warnings() # Disable warnings
 
 # APIC-EM IP, modify these parameters if you are using your own APIC-EM
-apicem_ip = ""
-username = ""
-password = ""
+apicem_ip = "sandboxapicem.cisco.com"
+username = "devnetuser"
+password = "Cisco123!"
 version = "v1"
 
 # JSONhttps://sandboxapic.cisco.com/ input

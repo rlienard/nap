@@ -17,7 +17,6 @@ def get_host():
         resp = get(api="host") # The get() function is the simplified version for "get" function in requests module, defined in apicem.py
         response_json = resp.json() # Get the json-encoded content from response
         print ("Status: ",resp.status_code)  # This is the http request status
-
     except:
         print ("Something wrong with GET /host request!")
         return host_list
@@ -26,7 +25,6 @@ def get_host():
     for item in response_json["response"]:
         i+=1
         host_list.append([i,item["hostIp"],item["hostType"],item["connectedNetworkDeviceIpAddress"]])
-        # print (json.dumps(item,indent=4))
     return host_list
 
 if __name__ == "__main__": # Execute only if run as a script
@@ -35,3 +33,7 @@ if __name__ == "__main__": # Execute only if run as a script
     # The tabulate module is imported in apicem.py
     # For the simplicity we just copy the source code in working directory without installing it
     print (tabulate(host,headers=['number','host IP','type','connected to network device'],tablefmt="rst"))
+
+
+
+
