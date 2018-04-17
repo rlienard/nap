@@ -1,4 +1,4 @@
-# network-automation
+# Network Automation Platform
 The aim of this project is to automate network operations.
 
 We are using several modules :
