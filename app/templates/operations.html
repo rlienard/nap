@@ -1,5 +1,45 @@
 {% extends "base.html" %}
 
-{% block content %}
-    <h1>Hi, {{ current_user.username }}!</h1>
+{% block app_content %}
+    <h1>Create new device</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.members_in_stack.label }}:
+            {{ form.members_in_stack(size=1) }}<br>
+        </p>
+        <p>
+            {{ form.uplinks.label }}:
+            {{ form.uplinks(size=1) }}<br>
+        </p>
+        <p>
+            {{ form.vlan_interco_vdl.label }}:
+            {{ form.vlan_interco_vdl(size=4) }}<br>
+        </p>
+        <p>
+            <strong>VDL interco</strong>: 10.
+            {{ form.second_byte_mgmt_vdl(size=3) }}.
+            {{ form.third_byte_mgmt_vdl(size=3) }}.
+            {{ form.fourth_byte_mgmt_vdl(size=3) }}<br>
+        </p>
+        <p>
+            <strong>TL interco</strong>: 10.
+            {{ form.second_byte_interco_tl(size=3) }}.
+            {{ form.third_byte_interco_tl(size=3) }}.0<br>
+        </p>
+        <p>
+            <strong>TL interco</strong>: 10.197.
+            {{ form.third_byte_hc(size=3) }}.0<br>
+        </p>
+        <p>
+            <strong>Hostname</strong>: {{ form.hostname(size=32) }}<br>
+        </p>
+        <p>
+            <strong>Number of ports</strong>: {{ form.accessport_nb(size=2) }}<br>
+        </p>
+        <p>
+            <strong>SNMP Location</strong>: {{ form.snmp_location(size=32) }}<br>
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
 {% endblock %}
