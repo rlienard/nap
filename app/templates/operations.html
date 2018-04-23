@@ -8,7 +8,7 @@
 
 {% block app_content %}
     <h1>Create new device</h1>
-    <form action="" method="post">
+    <form id="myform" action="" method="post">
         {{ form.hidden_tag() }}
         <p>
             {{ form.device_model.label }}:
@@ -38,15 +38,15 @@
         <p>
             <strong>Select QoS profile</strong>: {{ form.easyqos_profile() }}<br>
         </p>
+        <p>
+          {{ form.has_tl.label }}:
+          {{ form.has_tl() }}<br>
+        </p>
+        <p>
+          {{ form.has_hc.label }}:
+          {{ form.has_hc() }}<br>
+        </p>
         <div id="div_l2">
-          <p>
-            {{ form.has_tl.label }}
-            {{ form.has_tl() }}<br>
-          </p>
-          <p>
-            {{ form.has_hc.label }}
-            {{ form.has_hc() }}<br>
-          </p>
           <p>
             <strong>Switch Mgmt IP (VRF VDL)</strong>: 10.
             {{ form.second_byte_mgmt_vdl(size=3) }}.
@@ -55,14 +55,6 @@
           </p>
         </div>
         <div id="div_l3">
-          <p>
-              {{ form.has_tl.label }}:
-              {{ form.has_tl() }}<br>
-          </p>
-          <p>
-            {{ form.has_hc.label }}:
-            {{ form.has_hc() }}<br>
-          </p>
           <p>
             {{ form.vlan_interco_vdl.label }}:
             {{ form.vlan_interco_vdl(size=4) }}<br>
