@@ -2,82 +2,106 @@
 
 {% block scripts %}
   {{super()}}
-  <script src="/static/js/jquery-3.3.1.min.js"></script>
-  <script src="/static/js/scripts.js"></script>
+  <script src="{{url_for('static', filename='js/jquery-3.3.1.min.js')}}"></script>
+  <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
 {% endblock %}
 
 {% block app_content %}
-    <h1>Create new device</h1>
-    <form id="myform" action="" method="post">
-        {{ form.hidden_tag() }}
+<h1>Create new device</h1>
+<form id="myform" action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.device_model.label }}:
+        {{ form.device_model() }}<br>
+    </p>
+    <div id="div_router">
+      <p>
+        {{ form.hostname.label }}:
+        {{ form.hostname(size=32) }}<br>
+      </p>
+      <p>
+        {{ form.tunnel_address.label }}: 10.100.5[1-2].
+        {{ form.tunnel_address(size=3) }}<br>
+      </p>
+      <p>
+        {{ form.site_code.label }}:
+        {{ form.site_code(size=4) }}<br>
+      </p>
+      <p>
+        {{ form.snmp_location.label }}:
+        {{ form.snmp_location(size=32) }}<br>
+      </p>
+    </div>
+    <div id="div_switch">
+      <div id="div_switch_is_l3">
         <p>
-            {{ form.device_model.label }}:
-            {{ form.device_model() }}<br>
+          {{ form.is_l3.label }}:
+          {{ form.is_l3() }}<br>
         </p>
+      </div>
+      <div id="div_switch_members_in_stack">
         <p>
-            {{ form.is_l3.label }}:
-            {{ form.is_l3() }}<br>
+          {{ form.members_in_stack.label }}:
+          {{ form.members_in_stack(size=1) }}<br>
         </p>
+      </div>
+      <p>
+        {{ form.uplinks.label }}:
+        {{ form.uplinks(size=1) }}<br>
+      </p>
+      <p>
+        <strong>Hostname</strong>: {{ form.hostname(size=32) }}<br>
+      </p>
+      <p>
+        <strong>Number of ports</strong>: {{ form.accessport_nb(size=2) }}<br>
+      </p>
+      <p>
+        <strong>SNMP Location</strong>: {{ form.snmp_location(size=32) }}<br>
+      </p>
+      <p>
+        <strong>Select QoS profile</strong>: {{ form.easyqos_profile() }}<br>
+      </p>
+      <p>
+        {{ form.has_tl.label }}:
+        {{ form.has_tl() }}<br>
+      </p>
+      <p>
+        {{ form.has_hc.label }}:
+        {{ form.has_hc() }}<br>
+      </p>
+    </div>
+    <div id="div_l2">
+      <p>
+        <strong>Switch Mgmt IP (VRF VDL)</strong>: 10.
+        {{ form.second_byte_mgmt_vdl(size=3) }}.
+        {{ form.third_byte_mgmt_vdl(size=3) }}.
+        {{ form.fourth_byte_mgmt_vdl(size=3) }}<br>
+      </p>
+    </div>
+    <div id="div_l3">
+      <p>
+        {{ form.vlan_interco_vdl.label }}:
+        {{ form.vlan_interco_vdl(size=4) }}<br>
+      </p>
+      <p>
+        <strong>VDL-Mgmt interco subnet</strong>: 10.
+        {{ form.second_byte_mgmt_vdl(size=3) }}.
+        {{ form.third_byte_mgmt_vdl(size=3) }}.x<br>
+      </p>
+      <div id="div_l3_tl">
         <p>
-            {{ form.members_in_stack.label }}:
-            {{ form.members_in_stack(size=1) }}<br>
+          <strong>Technolink interco subnet</strong>: 10.
+          {{ form.second_byte_interco_tl(size=3) }}.
+          {{ form.third_byte_interco_tl(size=3) }}.x<br>
         </p>
+      </div>
+      <div id="div_l3_hc">
         <p>
-            {{ form.uplinks.label }}:
-            {{ form.uplinks(size=1) }}<br>
+          <strong>Hotcity interco subnet</strong>: 10.197.
+          {{ form.third_byte_hc(size=3) }}.x<br>
         </p>
-        <p>
-            <strong>Hostname</strong>: {{ form.hostname(size=32) }}<br>
-        </p>
-        <p>
-            <strong>Number of ports</strong>: {{ form.accessport_nb(size=2) }}<br>
-        </p>
-        <p>
-            <strong>SNMP Location</strong>: {{ form.snmp_location(size=32) }}<br>
-        </p>
-        <p>
-            <strong>Select QoS profile</strong>: {{ form.easyqos_profile() }}<br>
-        </p>
-        <p>
-          {{ form.has_tl.label }}:
-          {{ form.has_tl() }}<br>
-        </p>
-        <p>
-          {{ form.has_hc.label }}:
-          {{ form.has_hc() }}<br>
-        </p>
-        <div id="div_l2">
-          <p>
-            <strong>Switch Mgmt IP (VRF VDL)</strong>: 10.
-            {{ form.second_byte_mgmt_vdl(size=3) }}.
-            {{ form.third_byte_mgmt_vdl(size=3) }}.
-            {{ form.fourth_byte_mgmt_vdl(size=3) }}<br>
-          </p>
-        </div>
-        <div id="div_l3">
-          <p>
-            {{ form.vlan_interco_vdl.label }}:
-            {{ form.vlan_interco_vdl(size=4) }}<br>
-          </p>
-          <p>
-            <strong>VDL-Mgmt interco subnet</strong>: 10.
-            {{ form.second_byte_mgmt_vdl(size=3) }}.
-            {{ form.third_byte_mgmt_vdl(size=3) }}.x<br>
-          </p>
-          <div id="div_l3_tl">
-            <p>
-              <strong>Technolink interco subnet</strong>: 10.
-              {{ form.second_byte_interco_tl(size=3) }}.
-              {{ form.third_byte_interco_tl(size=3) }}.x<br>
-            </p>
-          </div>
-          <div id="div_l3_hc">
-            <p>
-              <strong>Hotcity interco subnet</strong>: 10.197.
-              {{ form.third_byte_hc(size=3) }}.x<br>
-            </p>
-          </div>
-        </div>
-        <p>{{ form.submit() }}</p>
-    </form>
+      </div>
+    </div>
+    <p>{{ form.submit() }}</p>
+</form>
 {% endblock %}

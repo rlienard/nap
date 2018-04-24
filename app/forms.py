@@ -32,7 +32,9 @@ class EditProfileForm(FlaskForm):
     submit = SubmitField('Submit')
 
 class NewdeviceForm(FlaskForm):
-    device_model = SelectField('Select device model', choices = [('1', 'Catalyst 3650'),('2', 'Catalyst 3560CX'),('3', 'Catalyst 3560CG'),('4', 'ISRG3 4321')])
+    device_model = SelectField('Select device model', choices = [('0', 'Select model'),('1', 'Catalyst 3650'),('2', 'Catalyst 3560CX'),('3', 'Catalyst 3560CG'),('4', 'ISRG3 4321')])
+    tunnel_address = StringField('Tunnel Address')
+    site_code = StringField('Site Code')
     members_in_stack = StringField('Number of stack members')
     uplinks = StringField('Number of uplinks')
     is_l3 = BooleanField('L3 device')
